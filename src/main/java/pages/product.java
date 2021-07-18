@@ -36,6 +36,9 @@ public class product {
     @FindBy(xpath = "//a[@class='a-size-medium a-link-normal a-text-bold a-text-italic']")
     private WebElement didYou;
 
+    @FindBy(id = "nav-cart-count")
+    private WebElement noOfItems;
+
     public void search(String productName){
         searchBox.clear();
         searchBox.sendKeys(productName);
@@ -52,7 +55,12 @@ public class product {
     }
     public void addToCart(){
         utils.changeTab();
+        int noOfItemsBefore = Integer.parseInt(noOfItems.getText());
         addToCartButton.click();
+        int noOfItemsAfter = Integer.parseInt(noOfItems.getText());
+        if(noOfItemsAfter-noOfItemsBefore != 1){
+            utility.utils.takeScreenshot();
+        }
         utils.closeTab();
     }
 }

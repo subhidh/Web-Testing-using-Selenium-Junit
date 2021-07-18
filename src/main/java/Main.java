@@ -24,10 +24,10 @@ public class Main {
         signInPage.login(frameworkProperties.getProperty("email"), frameworkProperties.getProperty("password"));
         product product = new product();
         checkout checkout = new checkout();
-        product.search("Samsung Note 10");
+        product.search("pendrive");
         product.open();
         product.addToCart();
-        product.search("iPhone 12");
+        product.search("ssd");
         product.open();
         product.addToCart();
         checkout.openCart();
